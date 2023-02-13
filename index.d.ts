@@ -44,12 +44,72 @@ declare module wavefile {
      * The data of the 'cue ' chunk.
      * @type {!Object<string, *>}
      */
-    cue: object;
+    cue: {
+		/** @type {string} */
+		chunkId: string,
+		/** @type {number} */
+		chunkSize: number,
+		/** @type {number} */
+		dwCuePoints: number,
+		/** @type {!Array<!Object>} */
+		points: {
+			/** @type {number} */
+			dwName: number, // a cue point ID
+			/** @type {number} */
+			dwPosition: number,
+			/** @type {number} */
+			fccChunk: number,
+			/** @type {number} */
+			dwChunkStart: number,
+			/** @type {number} */
+			dwBlockStart: number,
+			/** @type {number} */
+			dwSampleOffset: number
+		}[]
+	}
     /**
      * The data of the 'smpl' chunk.
      * @type {!Object<string, *>}
      */
-    smpl: object;
+    smpl: {
+		/** @type {string} */
+		chunkId: string,
+		/** @type {number} */
+		chunkSize: number,
+		/** @type {number} */
+		dwManufacturer: number,
+		/** @type {number} */
+		dwProduct: number,
+		/** @type {number} */
+		dwSamplePeriod: number,
+		/** @type {number} */
+		dwMIDIUnityNote: number,
+		/** @type {number} */
+		dwMIDIPitchFraction: number,
+		/** @type {number} */
+		dwSMPTEFormat: number,
+		/** @type {number} */
+		dwSMPTEOffset: number,
+		/** @type {number} */
+		dwNumSampleLoops: number,
+		/** @type {number} */
+		dwSamplerData: number,
+		/** @type {!Array<!Object>} */
+		loops: {
+			/** @type {string} */
+			dwName: string, // a cue point ID
+			/** @type {number} */
+			dwType: number,
+			/** @type {number} */
+			dwStart: number,
+			/** @type {number} */
+			dwEnd: number,
+			/** @type {number} */
+			dwFraction: number,
+			/** @type {number} */
+			dwPlayCount: number
+		}[]
+	}
     /**
      * The data of the 'bext' chunk.
      * @type {!Object<string, *>}
